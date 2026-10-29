@@ -1,4 +1,4 @@
-const CACHE = "arenac-v12";
+const CACHE = "arenac-v13";
 
 const ASSETS = [
   "./",
