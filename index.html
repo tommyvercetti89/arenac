@@ -267,6 +267,21 @@
     </div>
   </div>
 
+  <div class="modal-backdrop hidden" id="noticeModal">
+    <div class="modal modal-notice" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+      <div class="notice-icon-box">
+        <svg class="icon notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h3 class="notice-title" id="noticeTitle" data-i18n="noticeProfileSavedTitle">Profil Güncellendi</h3>
+      <p class="notice-text" id="noticeMsg" data-i18n="noticeProfileSavedMsg">Değişiklikleriniz başarıyla kaydedildi.</p>
+      <div class="notice-actions">
+        <button class="btn btn-notice-confirm" id="noticeConfirmBtn" type="button" data-i18n="noticeConfirm">TAMAM</button>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-backdrop hidden" id="debugModal">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="debugTitle">
       <div class="modal-head">
@@ -392,7 +407,18 @@
         <div class="setting-info">
           <span class="setting-label" data-i18n="setupTopic">Konu</span>
         </div>
-        <select class="select" id="topicSelect"></select>
+        <div class="custom-select-wrap">
+          <svg class="select-prefix-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="9" x2="20" y2="9"></line>
+            <line x1="4" y1="15" x2="20" y2="15"></line>
+            <line x1="10" y1="3" x2="8" y2="21"></line>
+            <line x1="16" y1="3" x2="14" y2="21"></line>
+          </svg>
+          <select class="custom-select" id="topicSelect"></select>
+          <svg class="select-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
       </div>
 
       <div class="setting-row">
@@ -426,37 +452,90 @@
   </div>
 
   <div class="modal-backdrop hidden" id="helpModal">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+    <div class="modal modal-help" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
       <div class="modal-head">
         <h3 id="helpTitle" data-i18n="helpTitle">Nasıl oynanır?</h3>
         <button class="icon-btn" id="helpClose" type="button" title="Kapat" aria-label="Kapat">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
         </button>
       </div>
-      <p class="modal-text" data-i18n="helpIntro">ArenaC, C dili mantığını ve kurallarını test eden bir web uygulamasıdır. İşte tüm modlar ve özellikler:</p>
+      <p class="modal-text" data-i18n="helpIntro">ArenaC, modern ve derin C dili mantığını, mimarisini ve tuzaklarını öğreten etkileşimli bir platformdur. İşte tüm modlar ve özellikler:</p>
       <div class="help-list">
         <div class="help-item">
-          <span class="help-name" data-i18n="quizBadge">QUIZ MODU</span>
-          <p data-i18n="helpQuiz">Kodun çıktısını tahmin et. Seviye ve konu seç; modu (klasik/sınav), soru sayısını ve süreyi ayarla.</p>
+          <div class="help-icon-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <div class="help-body">
+            <span class="help-name" data-i18n="helpQuizTitle">Quiz Modu · Kod Çıktısı</span>
+            <p data-i18n="helpQuizText">C dilinde karmaşık kod bloklarının ekran çıktısını veya çalışma mantığını tahmin edin. Klasik modda her soruda anında açıklama, Sınav modunda toplu sonuç sunulur.</p>
+          </div>
         </div>
+
         <div class="help-item">
-          <span class="help-name" data-i18n="debugBadge">DEBUGGING MODU</span>
-          <p data-i18n="helpDebug">Kodda kasıtlı bir C hatası var. Doğru hatayı şıklardan bul; cevaptan sonra hatanın nedeni ve çözümü gösterilir.</p>
+          <div class="help-icon-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="14" x="8" y="6" rx="4"></rect><path d="m19 7-3 2"></path><path d="m5 7 3 2"></path><path d="m19 19-3-2"></path><path d="m5 19 3-2"></path><path d="M20 13h-4"></path><path d="M4 13h4"></path><path d="m10 4 1 2"></path><path d="m14 4-1 2"></path></svg>
+          </div>
+          <div class="help-body">
+            <span class="help-name" data-i18n="helpDebugTitle">Debugging Modu · Hata Avı</span>
+            <p data-i18n="helpDebugText">Koddaki gizli derleme hatasını, tanımsız davranışı (UB), bellek sızıntısını veya sınır aşımını şıklardan tespit edin. ISO C referanslarıyla çözümü inceleyin.</p>
+          </div>
         </div>
+
         <div class="help-item">
-          <span class="help-name" data-i18n="dailyChallenge">Günlük Meydan Okuma</span>
-          <p data-i18n="helpDaily">Herkes aynı 10 soruyu çözer, günde bir kez. Seriyi büyütmek için her gün uğra.</p>
+          <div class="help-icon-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <div class="help-body">
+            <span class="help-name" data-i18n="helpSurvivalTitle">Zamana Karşı · Hayatta Kalma</span>
+            <p data-i18n="helpSurvivalText">Saniyelerle yarışın! Her doğru cevap ek süre ve seri puanı çarpanı kazandırır. Yanlış cevap sürenizi düşürür, rekorunuzu zorlayın.</p>
+          </div>
         </div>
+
         <div class="help-item">
-          <span class="help-name" data-i18n="helpProgressName">İlerleme ve Rozetler</span>
-          <p data-i18n="helpProgress">Doğru cevaplar XP kazandırır, seviye atlarsın. Rozetler açılır; yanlışların "Yanlışlarımı Çalış" ile tekrar sorulur.</p>
+          <div class="help-icon-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <div class="help-body">
+            <span class="help-name" data-i18n="helpDailyTitle">Günlük Meydan Okuma</span>
+            <p data-i18n="helpDailyText">Her gün tüm geliştiriciler için özel hazırlanan 10 soruluk test. Gün serinizi koruyarak her gün pratik yapın ve ekstra XP toplayın.</p>
+          </div>
+        </div>
+
+        <div class="help-item">
+          <div class="help-icon-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          </div>
+          <div class="help-body">
+            <span class="help-name" data-i18n="helpBadgesTitle">20 Rozet & Profil Vitrini</span>
+            <p data-i18n="helpBadgesText">Kolaydan Efsaneviye 4 zorluk kademesinde 20 rozet kazanın. Kazandığınız en prestijli rozeti profil vitrininize sabitleyin.</p>
+          </div>
+        </div>
+
+        <div class="help-item">
+          <div class="help-icon-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <div class="help-body">
+            <span class="help-name" data-i18n="helpProfileTitle">Çoklu Profil & JSON Yedekleme</span>
+            <p data-i18n="helpProfileText">Cihazınızda birden fazla yerel profil yönetin. Tüm ilerleme, rekor ve rozetlerinizi tek tıkla JSON dosyası olarak yedekleyin ve geri yükleyin.</p>
+          </div>
+        </div>
+
+        <div class="help-item">
+          <div class="help-icon-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div class="help-body">
+            <span class="help-name" data-i18n="helpReviewTitle">Yıldızlı Sorular & Yanlışları Çalış</span>
+            <p data-i18n="helpReviewText">Önemli soruları yıldızlayarak favorilerinize ekleyin; yanlış yaptığınız soruları otomatik biriken havuzdan özel pratikle pekiştirin.</p>
+          </div>
         </div>
       </div>
       <div class="hero-meta modal-meta">
         <span id="heroMetaPool"><b>0</b> soruluk havuz</span>
         <span id="heroMetaDebug"><b>0</b> debug sorusu</span>
         <span id="heroMetaPerRound">Test başına <b>10</b> soru</span>
-        <span data-i18n="heroMetaKbd">A–D klavye desteği</span>
+        <span data-i18n="heroMetaKbd">A–D / 1–4 klavye desteği</span>
       </div>
     </div>
   </div>
@@ -1048,7 +1127,16 @@ int (*p2)[5] = &amp;arr;  // p2 türü: int (*)[5] (5 elemanlı dizinin işaret�
           <span class="setting-desc" data-i18n="profileActiveDesc">Farklı profiller arasında geçiş yap</span>
         </div>
         <div class="profile-switch-wrap">
-          <select class="select profile-select" id="profileSelector"></select>
+          <div class="custom-select-wrap profile-select-wrap">
+            <svg class="select-prefix-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <select class="custom-select profile-select" id="profileSelector"></select>
+            <svg class="select-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
           <button class="btn btn-ghost btn-sm" id="profileNewBtn" type="button" data-i18n="profileNew">+ Yeni</button>
         </div>
       </div>

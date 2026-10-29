@@ -111,12 +111,30 @@ const I18N = {
     confirmExitText: "Test ilerlemen kaydedilmeyecek. Emin misin?",
     confirmStay: "Devam Et",
     confirmExit: "Çık",
-    helpIntro: "ArenaC, C dili mantığını ve kurallarını test eden bir web uygulamasıdır. İşte tüm modlar ve özellikler:",
-    helpQuiz: "Kodun çıktısını tahmin et. Seviye ve konu seç; modu (klasik/sınav), soru sayısını ve süreyi ayarla.",
-    helpDebug: "Kodda kasıtlı bir C hatası var. Doğru hatayı şıklardan bul; cevaptan sonra hatanın nedeni ve çözümü gösterilir.",
-    helpDaily: "Herkes aynı 10 soruyu çözer, günde bir kez. Seriyi büyütmek için her gün uğra.",
-    helpProgressName: "İlerleme ve Rozetler",
-    helpProgress: "Doğru cevaplar XP kazandırır, seviye atlarsın. Rozetler açılır; yanlışların \"Yanlışlarımı Çalış\" ile tekrar sorulur.",
+    helpIntro: "ArenaC, modern ve derin C dili mantığını, mimarisini ve tuzaklarını öğreten etkileşimli bir platformdur. İşte tüm modlar ve özellikler:",
+    helpQuizTitle: "Quiz Modu · Kod Çıktısı",
+    helpQuizText: "C dilinde karmaşık kod bloklarının ekran çıktısını veya çalışma mantığını tahmin edin. Klasik modda her soruda anında açıklama, Sınav modunda toplu sonuç sunulur.",
+    helpDebugTitle: "Debugging Modu · Hata Avı",
+    helpDebugText: "Koddaki gizli derleme hatasını, tanımsız davranışı (UB), bellek sızıntısını veya sınır aşımını şıklardan tespit edin. ISO C referanslarıyla çözümü inceleyin.",
+    helpSurvivalTitle: "Zamana Karşı · Hayatta Kalma",
+    helpSurvivalText: "Saniyelerle yarışın! Her doğru cevap ek süre ve seri puanı çarpanı kazandırır. Yanlış cevap sürenizi düşürür, rekorunuzu zorlayın.",
+    helpDailyTitle: "Günlük Meydan Okuma",
+    helpDailyText: "Her gün tüm geliştiriciler için özel hazırlanan 10 soruluk test. Gün serinizi koruyarak her gün pratik yapın ve ekstra XP toplayın.",
+    helpBadgesTitle: "20 Rozet & Profil Vitrini",
+    helpBadgesText: "Kolaydan Efsaneviye 4 zorluk kademesinde 20 rozet kazanın. Kazandığınız en prestijli rozeti profil vitrininize sabitleyin.",
+    helpProfileTitle: "Çoklu Profil & JSON Yedekleme",
+    helpProfileText: "Cihazınızda birden fazla yerel profil yönetin. Tüm ilerleme, rekor ve rozetlerinizi tek tıkla JSON dosyası olarak yedekleyin ve geri yükleyin.",
+    helpReviewTitle: "Yıldızlı Sorular & Yanlışları Çalış",
+    helpReviewText: "Önemli soruları yıldızlayarak favorilerinize ekleyin; yanlış yaptığınız soruları otomatik biriken havuzdan özel pratikle pekiştirin.",
+    noticeProfileSavedTitle: "Profil Güncellendi",
+    noticeProfileSavedMsg: "Değişiklikleriniz ve profil tercihleriniz başarıyla kaydedildi.",
+    noticeProfileCreatedTitle: "Yeni Profil Oluşturuldu",
+    noticeProfileCreatedMsg: "Yeni profiliniz hazırlandı ve aktif profil olarak seçildi.",
+    noticeProfileDeletedTitle: "Profil Silindi",
+    noticeProfileDeletedMsg: "Seçilen profil yerel depolamadan kaldırıldı.",
+    noticeProfileImportedTitle: "Profil İçe Aktarıldı",
+    noticeProfileImportedMsg: "Profil verileri ve ilerleme başarıyla yüklendi.",
+    noticeConfirm: "TAMAM",
     heroMetaDebug: "<b>{n}</b> debug sorusu",
     kbdHint: "Klavye: <kbd>A</kbd>–<kbd>D</kbd> veya <kbd>1</kbd>–<kbd>4</kbd> ile cevapla, <kbd>Enter</kbd> ile devam et",
     reviewTitle: "Yanlışlarını incele",
@@ -344,12 +362,30 @@ const I18N = {
     confirmExitText: "Your test progress will not be saved. Are you sure?",
     confirmStay: "Keep Going",
     confirmExit: "Quit",
-    helpIntro: "ArenaC tests your understanding of C logic and language rules. Here are all the modes and features:",
-    helpQuiz: "Predict the output of the code. Pick a level and topic; set the mode (classic/exam), question count and time.",
-    helpDebug: "The code contains an intentional C bug. Find the correct one; after answering you see the cause and the fix.",
-    helpDaily: "Everyone solves the same 10 questions, once a day. Come back daily to grow your streak.",
-    helpProgressName: "Progress and Badges",
-    helpProgress: "Correct answers earn XP and level you up. Unlock badges; your mistakes come back with \"Practice My Mistakes\".",
+    helpIntro: "ArenaC is an interactive platform designed to train deep C logic, architecture, and language traps. Here is an overview of all modes and features:",
+    helpQuizTitle: "Quiz Mode · Output Prediction",
+    helpQuizText: "Predict the console output or behavior of intricate C code snippets. Classic mode provides immediate explanations; Exam mode evaluates your overall score at the end.",
+    helpDebugTitle: "Debugging Mode · Bug Hunt",
+    helpDebugText: "Identify subtle compilation errors, undefined behavior (UB), memory leaks, or buffer overflows. Review in-depth fixes with ISO C standard citations.",
+    helpSurvivalTitle: "Time Attack · Survival Mode",
+    helpSurvivalText: "Race against a ticking countdown! Correct answers reward bonus time and streak multipliers. Wrong answers penalize your remaining time.",
+    helpDailyTitle: "Daily Challenge",
+    helpDailyText: "A curated 10-question set released every single day. Practice daily to protect your streak and earn bonus XP.",
+    helpBadgesTitle: "20 Badges & Profile Showcase",
+    helpBadgesText: "Unlock 20 achievements across 4 difficulty tiers from Easy to Legendary. Pin your most distinguished badge directly to your player profile vitrin.",
+    helpProfileTitle: "Multi-Profile & JSON Backup",
+    helpProfileText: "Manage multiple local player profiles on your device. Safely export and import all progress, high scores, and badges as a JSON backup with one click.",
+    helpReviewTitle: "Starred Questions & Mistake Review",
+    helpReviewText: "Bookmark challenging questions for later review; reinforce tricky concepts by practicing previously missed questions in an isolated quiz.",
+    noticeProfileSavedTitle: "Profile Updated",
+    noticeProfileSavedMsg: "Your changes and profile preferences have been saved successfully.",
+    noticeProfileCreatedTitle: "Profile Created",
+    noticeProfileCreatedMsg: "Your new profile has been initialized and activated.",
+    noticeProfileDeletedTitle: "Profile Deleted",
+    noticeProfileDeletedMsg: "The selected profile was removed from local storage.",
+    noticeProfileImportedTitle: "Profile Imported",
+    noticeProfileImportedMsg: "Profile data and records were imported successfully.",
+    noticeConfirm: "OK",
     heroMetaDebug: "<b>{n}</b> debug questions",
     kbdHint: "Keyboard: answer with <kbd>A</kbd>–<kbd>D</kbd> or <kbd>1</kbd>–<kbd>4</kbd>, continue with <kbd>Enter</kbd>",
     reviewTitle: "Review your mistakes",
@@ -732,6 +768,10 @@ const els = {
   badgesCount: document.getElementById("badgesCount"),
   badgesList: document.getElementById("badgesList"),
   profilePinnedBadge: document.getElementById("profilePinnedBadge"),
+  noticeModal: document.getElementById("noticeModal"),
+  noticeTitle: document.getElementById("noticeTitle"),
+  noticeMsg: document.getElementById("noticeMsg"),
+  noticeConfirmBtn: document.getElementById("noticeConfirmBtn"),
 
   settingsBtn: document.getElementById("settingsBtn"),
   screenHome: document.getElementById("screenHome"),
@@ -2381,6 +2421,10 @@ function closeStats() {
 }
 
 function openHelp() {
+  const d = dict();
+  if (els.heroMetaPool) els.heroMetaPool.innerHTML = fmt(d.heroMetaPool, { n: totalQuestions() });
+  if (els.heroMetaDebug) els.heroMetaDebug.innerHTML = fmt(d.heroMetaDebug, { n: totalDebugQuestions() });
+  if (els.heroMetaPerRound) els.heroMetaPerRound.innerHTML = fmt(d.heroMetaPerRound, { n: QUESTIONS_PER_ROUND });
   els.helpModal.classList.remove("hidden");
   refreshModalOpen();
 }
@@ -2663,6 +2707,22 @@ function showProfileFeedback(msg) {
   profileFeedbackTimer = setTimeout(() => {
     els.profileFeedback.classList.add("hidden");
   }, 2600);
+}
+
+function showNoticeModal(title, msg, btnText) {
+  const d = dict();
+  if (els.noticeTitle) els.noticeTitle.textContent = title || d.noticeProfileSavedTitle;
+  if (els.noticeMsg) els.noticeMsg.textContent = msg || d.noticeProfileSavedMsg;
+  if (els.noticeConfirmBtn) els.noticeConfirmBtn.textContent = btnText || d.noticeConfirm;
+  if (els.noticeModal) els.noticeModal.classList.remove("hidden");
+  refreshModalOpen();
+  sound.play("correct");
+}
+
+function closeNoticeModal() {
+  if (els.noticeModal) els.noticeModal.classList.add("hidden");
+  refreshModalOpen();
+  sound.play("click");
 }
 
 function getProfileTitle(level) {
@@ -2978,16 +3038,16 @@ function createNewProfile() {
   profiles.push(newProf);
   saveProfiles(profiles);
   switchProfile(newProf.id);
-  showProfileFeedback(d.profileCreated);
+  showNoticeModal(d.noticeProfileCreatedTitle, d.noticeProfileCreatedMsg, d.noticeConfirm);
 }
 
 function saveCurrentProfileEdits() {
+  const d = dict();
   const cur = getCurrentProfile();
   const newName = els.profileNameInput.value.trim();
   if (newName) {
     cur.name = newName.slice(0, 24);
   }
-
 
   const profiles = getProfiles();
   const idx = profiles.findIndex((p) => p.id === cur.id);
@@ -2998,11 +3058,11 @@ function saveCurrentProfileEdits() {
 
   updateProfileNavbarIcon();
   renderProfileModalUI();
-  showProfileFeedback(dict().profileSaved);
-  sound.play("click");
+  showNoticeModal(d.noticeProfileSavedTitle, d.noticeProfileSavedMsg, d.noticeConfirm);
 }
 
 function deleteCurrentProfile() {
+  const d = dict();
   const profiles = getProfiles();
   if (profiles.length <= 1) {
     showProfileFeedback(state.lang === "tr" ? "En az bir profil bulunmalıdır." : "At least one profile is required.");
@@ -3015,7 +3075,7 @@ function deleteCurrentProfile() {
   const remaining = profiles.filter((p) => p.id !== cur.id);
   saveProfiles(remaining);
   switchProfile(remaining[0].id);
-  sound.play("click");
+  showNoticeModal(d.noticeProfileDeletedTitle, d.noticeProfileDeletedMsg, d.noticeConfirm);
 }
 
 function exportCurrentProfile() {
@@ -3080,8 +3140,7 @@ function importProfile(file) {
       profiles.push(newProf);
       saveProfiles(profiles);
       switchProfile(newProf.id);
-      showProfileFeedback(d.profileImportDone);
-      sound.play("correct");
+      showNoticeModal(d.noticeProfileImportedTitle, d.noticeProfileImportedMsg, d.noticeConfirm);
     } catch (err) {
       showProfileFeedback(dict().importError);
       sound.play("wrong");
@@ -3213,6 +3272,15 @@ els.profileFileInput.addEventListener("change", (e) => {
     e.target.value = "";
   }
 });
+
+if (els.noticeConfirmBtn) {
+  els.noticeConfirmBtn.addEventListener("click", closeNoticeModal);
+}
+if (els.noticeModal) {
+  els.noticeModal.addEventListener("click", (e) => {
+    if (e.target === els.noticeModal) closeNoticeModal();
+  });
+}
 
 els.settingsBtn.addEventListener("click", openSettings);
 els.settingsClose.addEventListener("click", closeSettings);
