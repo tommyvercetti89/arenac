@@ -1,0 +1,15 @@
+# Dependencies and runtime logs
+node_modules/
+*.log
+npm-debug.log*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Separate repositories
+arenapy_repo/
+
+# Local duplicate workspace folder (production files are hosted at repository root)
+arenaC/

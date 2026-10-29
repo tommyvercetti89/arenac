@@ -1,0 +1,66 @@
+{
+  "name": "ArenaC · C Dili Mantık Testi",
+  "short_name": "ArenaC",
+  "description": "Kodun çıktısını tahmin et: başlangıçtan uzman seviyeye, açıklamalı C dili mantık soruları.",
+  "lang": "tr",
+  "id": "arenac-pwa",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "categories": [
+    "education",
+    "developer",
+    "utilities"
+  ],
+  "prefer_related_applications": false,
+  "background_color": "#0b0c10",
+  "theme_color": "#0b0c10",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "arena.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "ArenaC · C Dili Mantık Testi"
+    },
+    {
+      "src": "arena.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "ArenaC · C Dili Mantık Testi"
+    }
+  ]
+}

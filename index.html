@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' blob: https://fonts.googleapis.com https://fonts.gstatic.com; manifest-src 'self'; worker-src 'self'; child-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self';" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="ArenaC" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>ArenaC · C Dili Mantık Testi</title>
+  <meta name="description" content="Kodun çıktısını tahmin et: başlangıçtan uzman seviyeye, açıklamalı C dili mantık soruları." />
+  <meta property="og:title" content="ArenaC · C Dili Mantık Testi" />
+  <meta property="og:description" content="Kodun çıktısını tahmin et: başlangıçtan uzman seviyeye, açıklamalı C dili mantık soruları." />
+  <meta property="og:image" content="arena.png" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="ArenaC" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="brand" id="brandHome" type="button">
+        <img class="brand-mark" src="icon-192.png" alt="ArenaC" />
+        <span class="brand-name">ArenaC</span>
+      </button>
+      <button class="icon-btn" id="helpBtn" type="button" title="Nasıl oynanır?" aria-label="Nasıl oynanır?">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      </button>
+      <button class="icon-btn" id="docsBtn" type="button" title="C Çalışma Rehberi" aria-label="C Çalışma Rehberi">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      </button>
+    </div>
+    <div class="topbar-right">
+      <span class="brand-tag" data-i18n="brandTag">c · mantık · quiz</span>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="fullscreenBtn" type="button" title="Tam ekran" aria-label="Tam ekran">
+          <svg class="icon" id="fsIconEnter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          <svg class="icon hidden" id="fsIconExit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg>
+        </button>
+        <button class="icon-btn" id="settingsBtn" type="button" title="Ayarlar" aria-label="Ayarlar">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </button>
+        <button class="icon-btn" id="profileBtn" type="button" title="Profil" aria-label="Profil" data-i18n-title="profileBtnTitle">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="screenHome" class="screen active">
+      <div class="hero">
+        <h1><span data-i18n="heroTitleA">Kodun çıktısını </span><span data-i18n="heroTitleB">tahmin edebilir misin?</span></h1>
+      </div>
+
+      <div class="home-panel" id="homePanel">
+        <div class="home-panel-item">
+          <span class="home-panel-label" data-i18n="statLevelLabel">Seviye</span>
+          <span class="home-panel-value" id="levelValue">1</span>
+        </div>
+        <div class="home-panel-item home-panel-xp">
+          <div class="home-panel-head">
+            <span class="home-panel-label">XP</span>
+            <span class="home-panel-sub" id="xpValue">0 / 250 XP</span>
+          </div>
+          <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
+        </div>
+        <div class="home-panel-item">
+          <span class="home-panel-label" data-i18n="statStreakLabel">Gün Serisi</span>
+          <span class="home-panel-value" id="streakValue">0</span>
+        </div>
+        <div class="home-panel-actions">
+          <button class="btn btn-primary btn-sm" id="dailyBtn" type="button" data-i18n="dailyChallenge">Günlük Meydan Okuma</button>
+          <button class="btn btn-ghost btn-sm" id="statsBtn" type="button" data-i18n="statsTitle">İstatistikler</button>
+          <button class="btn btn-ghost btn-sm" id="badgesBtn" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span data-i18n="badgesBtn">Başarımlar</span>
+          </button>
+          <button class="btn btn-ghost btn-sm" id="mistakesBtn" type="button" data-i18n="mistakesTest">Yanlışlarımı Çalış</button>
+          <button class="btn btn-ghost btn-sm" id="bookmarksBtn" type="button" data-i18n="bookmarksTest">Yıldızlı Sorular</button>
+        </div>
+      </div>
+
+      <div class="mode-tabs">
+        <button class="mode-tab active" id="modeTabQuiz" type="button">
+          <span class="mode-tab-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </span>
+          <span class="mode-tab-title">Quiz</span>
+          <span class="mode-tab-sub" data-i18n="quizTabSub">Kod çıktısı soruları</span>
+        </button>
+        <button class="mode-tab" id="modeTabDebug" type="button">
+          <span class="mode-tab-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l1.88 1.88"></path><path d="M14.12 3.88 16 2"></path><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"></path><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6z"></path><path d="M12 20v-9"></path><path d="M6.53 9C4.6 8.8 3 7.1 3 5"></path><path d="M6 13H2"></path><path d="M3 21c0-2.1 1.7-3.9 3.8-4"></path><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"></path><path d="M22 13h-4"></path><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"></path></svg>
+          </span>
+          <span class="mode-tab-title">Debugging</span>
+          <span class="mode-tab-sub" data-i18n="debugTabSub">Kasıtlı hataları bul</span>
+        </button>
+        <button class="mode-tab" id="modeTabSurvival" type="button">
+          <span class="mode-tab-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </span>
+          <span class="mode-tab-title" data-i18n="survivalTitle">Zamana Karşı</span>
+          <span class="mode-tab-sub" data-i18n="survivalTabSub">20 sn, her doğruya +3 sn</span>
+        </button>
+      </div>
+
+      <div id="quizSection" class="hidden">
+        <div class="section-head">
+          <h2 data-i18n="homeSectionTitle">Zorluk seviyesi seç</h2>
+        </div>
+        <div class="diff-grid" id="diffGrid"></div>
+      </div>
+
+      <div id="debugSection" class="hidden">
+        <div class="section-head">
+          <h2 data-i18n="debugSectionTitle">Debug seviyesi seç</h2>
+          <p data-i18n="debugDesc">Kodlardaki kasıtlı hataları bul</p>
+        </div>
+        <div class="diff-grid" id="debugGrid"></div>
+      </div>
+
+      <div id="survivalSection" class="hidden">
+        <div class="section-head">
+          <h2 data-i18n="survivalSectionTitle">Zamana Karşı Meydan Okuma</h2>
+          <p data-i18n="survivalDesc">20 saniyen var. Her doğru cevap sürene +3 saniye kazandırır. Yanlış yaparsan veya süre biterse oyun sonlanır!</p>
+        </div>
+        <div class="survival-card">
+          <div class="survival-stats-row">
+            <div class="survival-stat-box">
+              <span class="survival-stat-label" data-i18n="survivalBest">En İyi Seri</span>
+              <span class="survival-stat-val" id="survivalBestScore">0 Soru</span>
+            </div>
+            <div class="survival-stat-box">
+              <span class="survival-stat-label" data-i18n="survivalTotalPlayed">Oynanan</span>
+              <span class="survival-stat-val" id="survivalTotalGames">0 Kez</span>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-lg survival-start-btn" id="survivalStartBtn" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span data-i18n="survivalStart">Meydan Okumayı Başlat</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenQuiz" class="screen">
+      <div class="quiz-head">
+        <div class="quiz-head-left">
+          <button class="btn btn-ghost btn-sm" id="quizBackBtn" type="button" data-i18n="quizBack">← Seviye Seç</button>
+          <span class="chip chip-diff" id="quizDiffChip">Başlangıç</span>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-meta">
+          <span id="progressQuestion">Soru 1 / 10</span>
+          <div class="progress-meta-right">
+            <span class="chip hidden" id="timerChip">00:00</span>
+            <span id="progressScore">Doğru: 0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-card">
+        <div class="code-window">
+          <div class="code-head">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="code-lang">c</span>
+            <button class="bookmark-btn" id="bookmarkBtn" type="button" title="Soruyu Yıldızla" aria-label="Soruyu Yıldızla">
+              <svg class="icon icon-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+            </button>
+          </div>
+          <pre class="code"><code id="codeBlock"></code></pre>
+        </div>
+
+        <p class="question-text" id="questionText">Bu kodun çıktısı nedir?</p>
+
+        <div class="options" id="optionsGrid"></div>
+
+        <p class="kbd-hint" id="kbdHint">Klavye: <kbd>A</kbd>–<kbd>D</kbd> veya <kbd>1</kbd>–<kbd>4</kbd> ile cevapla, <kbd>Enter</kbd> ile devam et</p>
+
+        <div class="feedback hidden" id="feedback">
+          <div class="feedback-head">
+            <span class="feedback-icon" id="feedbackIcon"></span>
+            <strong class="feedback-title" id="feedbackTitle"></strong>
+          </div>
+          <div class="feedback-answer" id="feedbackAnswer"></div>
+          <p class="feedback-text" id="feedbackText"></p>
+          <div class="feedback-actions">
+            <button class="btn btn-primary" id="nextBtn" type="button">Sonraki Soru</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenResult" class="screen">
+      <div class="result-card">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+            <circle class="ring-bg" cx="100" cy="100" r="86"></circle>
+            <circle class="ring-fill" id="ringFill" cx="100" cy="100" r="86"></circle>
+          </svg>
+          <div class="ring-center">
+            <span class="ring-percent" id="ringPercent">0%</span>
+            <span class="ring-label" id="ringScore">0 / 10</span>
+          </div>
+        </div>
+        <h2 id="resultTitle"></h2>
+        <p class="result-sub" id="resultSubtitle"></p>
+        <p class="result-badges hidden" id="resultBadges"></p>
+        <div class="result-stats">
+          <div class="stat stat-correct"><span class="stat-value" id="statCorrect">0</span><span class="stat-label" data-i18n="statCorrect">Doğru</span></div>
+          <div class="stat stat-wrong"><span class="stat-value" id="statWrong">0</span><span class="stat-label" data-i18n="statWrong">Yanlış</span></div>
+          <div class="stat"><span class="stat-value" id="statDiff">-</span><span class="stat-label" data-i18n="statLevel">Seviye</span></div>
+        </div>
+        <div class="result-actions">
+          <button class="btn btn-primary" id="retryBtn" type="button" data-i18n="retry">Tekrar Dene</button>
+          <button class="btn btn-ghost" id="homeBtn" type="button" data-i18n="chooseLevel">Seviye Seç</button>
+          <button class="btn btn-ghost" id="shareCardBtn" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span data-i18n="shareCard">Skor Kartını İndir</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="review hidden" id="review">
+        <div class="section-head">
+          <h2 data-i18n="reviewTitle">Yanlışlarını incele</h2>
+          <p data-i18n="reviewSub">Doğru cevaplar ve açıklamaları burada.</p>
+        </div>
+        <div id="reviewList"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer container">
+    <p data-i18n="footerText">ArenaC · mantık sorularıyla C dili pratiği.</p>
+  </footer>
+
+  <div class="modal-backdrop hidden" id="confirmModal">
+    <div class="modal modal-small" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="modal-head">
+        <h3 id="confirmTitle" data-i18n="confirmExitTitle">Testten çıkılsın mı?</h3>
+      </div>
+      <p class="modal-text" data-i18n="confirmExitText">Test ilerlemen kaydedilmeyecek. Emin misin?</p>
+      <div class="modal-actions modal-actions-row">
+        <button class="btn btn-ghost" id="confirmStayBtn" type="button" data-i18n="confirmStay">Devam Et</button>
+        <button class="btn btn-primary" id="confirmExitBtn" type="button" data-i18n="confirmExit">Çık</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="debugModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="debugTitle">
+      <div class="modal-head">
+        <h3 id="debugTitle" data-i18n="debugSetupTitle">Debugging Testi</h3>
+        <button class="icon-btn" id="debugClose" type="button" title="Kapat" aria-label="Kapat">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <p class="modal-text" id="debugPoolLabel">Başlangıç · 10 soru</p>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="setupLevel">Seviye</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn active" id="debugLvlBeginner" type="button">Başlangıç</button>
+          <button class="seg-btn" id="debugLvlIntermediate" type="button">Orta</button>
+          <button class="seg-btn" id="debugLvlAdvanced" type="button">İleri</button>
+          <button class="seg-btn" id="debugLvlExpert" type="button">Uzman</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="setupMode">Mod</span>
+          <span class="setting-desc" id="debugModeDesc">Her sorudan sonra doğru cevabı ve açıklamayı görürsün.</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn active" id="debugModeClassicBtn" type="button" data-i18n="modeClassic">Klasik</button>
+          <button class="seg-btn" id="debugModeExamBtn" type="button" data-i18n="modeExam">Sınav</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="setupCount">Soru Sayısı</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn" id="debugCount5Btn" type="button">5</button>
+          <button class="seg-btn active" id="debugCount10Btn" type="button">10</button>
+          <button class="seg-btn" id="debugCount15Btn" type="button">15</button>
+          <button class="seg-btn" id="debugCountAllBtn" type="button" data-i18n="countAll">Tümü</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="setupTime">Süre</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn active" id="debugTimeOffBtn" type="button" data-i18n="timeOff">Kapalı</button>
+          <button class="seg-btn" id="debugTime2Btn" type="button" data-i18n="time2">2 dk</button>
+          <button class="seg-btn" id="debugTime5Btn" type="button" data-i18n="time5">5 dk</button>
+          <button class="seg-btn" id="debugTime10Btn" type="button" data-i18n="time10">10 dk</button>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="debugStartBtn" type="button" data-i18n="startTest">Teste Başla</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="installModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+      <div class="modal-head">
+        <h3 id="installTitle" data-i18n="installApp">Uygulamayı Yükle</h3>
+        <button class="icon-btn" id="installClose" type="button" title="Kapat" aria-label="Kapat">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <p class="modal-text" data-i18n="installIntro">ArenaC'yi ana ekranına uygulama gibi ekleyebilirsin; çevrimdışı da çalışır.</p>
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="installAndroidTitle">Android (Chrome)</span>
+          <span class="setting-desc" data-i18n="installAndroidDesc">Tarayıcı menüsünü (üç nokta) aç ve "Uygulamayı yükle" veya "Ana ekrana ekle" seçeneğine dokun.</span>
+        </div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="installIosTitle">iPhone / iPad (Safari)</span>
+          <span class="setting-desc" data-i18n="installIosDesc">Paylaş düğmesine dokun ve "Ana Ekrana Ekle" seçeneğini seç.</span>
+        </div>
+      </div>
+      <p class="modal-text" data-i18n="installNote">İpucu: Sayfayı WhatsApp gibi bir uygulamanın içinden değil, doğrudan tarayıcıda (adres çubuğuna yazarak) açmalısın.</p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="statsModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="statsTitle">
+      <div class="modal-head">
+        <h3 id="statsTitle" data-i18n="statsTitle">İstatistikler</h3>
+        <button class="icon-btn" id="statsClose" type="button" title="Kapat" aria-label="Kapat">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div id="statsContent"></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="setupModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+      <div class="modal-head">
+        <h3 id="setupTitle" data-i18n="setupTitle">Testi Ayarla</h3>
+        <button class="icon-btn" id="setupClose" type="button" title="Kapat" aria-label="Kapat">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <p class="modal-text" id="setupDiffLabel">Başlangıç · 25 soru</p>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="setupMode">Mod</span>
+          <span class="setting-desc" id="setupModeDesc">Her sorudan sonra doğru cevabı ve açıklamayı görürsün.</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn active" id="modeClassicBtn" type="button" data-i18n="modeClassic">Klasik</button>
+          <button class="seg-btn" id="modeExamBtn" type="button" data-i18n="modeExam">Sınav</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="setupTopic">Konu</span>
+        </div>
+        <select class="select" id="topicSelect"></select>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="setupCount">Soru Sayısı</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn" id="count5Btn" type="button">5</button>
+          <button class="seg-btn active" id="count10Btn" type="button">10</button>
+          <button class="seg-btn" id="count15Btn" type="button">15</button>
+          <button class="seg-btn" id="countAllBtn" type="button" data-i18n="countAll">Tümü</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="setupTime">Süre</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn active" id="timeOffBtn" type="button" data-i18n="timeOff">Kapalı</button>
+          <button class="seg-btn" id="time2Btn" type="button" data-i18n="time2">2 dk</button>
+          <button class="seg-btn" id="time5Btn" type="button" data-i18n="time5">5 dk</button>
+          <button class="seg-btn" id="time10Btn" type="button" data-i18n="time10">10 dk</button>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="setupStartBtn" type="button" data-i18n="startTest">Teste Başla</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="helpModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+      <div class="modal-head">
+        <h3 id="helpTitle" data-i18n="helpTitle">Nasıl oynanır?</h3>
+        <button class="icon-btn" id="helpClose" type="button" title="Kapat" aria-label="Kapat">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <p class="modal-text" data-i18n="helpIntro">ArenaC, C dili mantığını ve kurallarını test eden bir web uygulamasıdır. İşte tüm modlar ve özellikler:</p>
+      <div class="help-list">
+        <div class="help-item">
+          <span class="help-name" data-i18n="quizBadge">QUIZ MODU</span>
+          <p data-i18n="helpQuiz">Kodun çıktısını tahmin et. Seviye ve konu seç; modu (klasik/sınav), soru sayısını ve süreyi ayarla.</p>
+        </div>
+        <div class="help-item">
+          <span class="help-name" data-i18n="debugBadge">DEBUGGING MODU</span>
+          <p data-i18n="helpDebug">Kodda kasıtlı bir C hatası var. Doğru hatayı şıklardan bul; cevaptan sonra hatanın nedeni ve çözümü gösterilir.</p>
+        </div>
+        <div class="help-item">
+          <span class="help-name" data-i18n="dailyChallenge">Günlük Meydan Okuma</span>
+          <p data-i18n="helpDaily">Herkes aynı 10 soruyu çözer, günde bir kez. Seriyi büyütmek için her gün uğra.</p>
+        </div>
+        <div class="help-item">
+          <span class="help-name" data-i18n="helpProgressName">İlerleme ve Rozetler</span>
+          <p data-i18n="helpProgress">Doğru cevaplar XP kazandırır, seviye atlarsın. Rozetler açılır; yanlışların "Yanlışlarımı Çalış" ile tekrar sorulur.</p>
+        </div>
+      </div>
+      <div class="hero-meta modal-meta">
+        <span id="heroMetaPool"><b>0</b> soruluk havuz</span>
+        <span id="heroMetaDebug"><b>0</b> debug sorusu</span>
+        <span id="heroMetaPerRound">Test başına <b>10</b> soru</span>
+        <span data-i18n="heroMetaKbd">A–D klavye desteği</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="docsModal">
+    <div class="modal modal-docs" role="dialog" aria-modal="true" aria-labelledby="docsTitle">
+      <div class="modal-head">
+        <div class="docs-title-wrap">
+          <h3 id="docsTitle" data-i18n="docsTitle">C Çalışma Rehberi</h3>
+          <span class="chip chip-docs" data-i18n="docsBadge">Referans & Hile Sayfası</span>
+        </div>
+        <button class="icon-btn" id="docsClose" type="button" title="Kapat" aria-label="Kapat">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="docs-tabs" role="tablist">
+        <button class="docs-tab active" id="docsTabFormat" type="button" role="tab" aria-selected="true">
+          <span class="docs-tab-icon">%</span>
+          <span data-i18n="docsTabFormat">Format Belirteçleri</span>
+        </button>
+        <button class="docs-tab" id="docsTabLibs" type="button" role="tab" aria-selected="false">
+          <span class="docs-tab-icon">&lt;&gt;</span>
+          <span data-i18n="docsTabLibs">Kütüphaneler & Fonksiyonlar</span>
+        </button>
+        <button class="docs-tab" id="docsTabMemory" type="button" role="tab" aria-selected="false">
+          <span class="docs-tab-icon">*</span>
+          <span data-i18n="docsTabMemory">Bellek & Pointer</span>
+        </button>
+        <button class="docs-tab" id="docsTabPrecedence" type="button" role="tab" aria-selected="false">
+          <span class="docs-tab-icon">!</span>
+          <span data-i18n="docsTabPrecedence">Öncelikler & UB</span>
+        </button>
+      </div>
+
+      <div class="docs-body">
+        <!-- 1. FORMAT BELİRTEÇLERİ -->
+        <section class="docs-section" id="docsSectionFormat">
+          <div class="docs-card">
+            <h4 class="docs-card-title">printf & scanf Format Belirteçleri</h4>
+            <p class="docs-desc">C dilinde tür uyumsuzluğu <strong>tanımsız davranışa (UB)</strong> veya bellek bozulmalarına yol açar. Aşağıdaki tabloda yaygın ve sinsi format belirteçleri listelenmiştir:</p>
+            
+            <div class="docs-table-wrap">
+              <table class="docs-table">
+                <thead>
+                  <tr>
+                    <th>Belirteç</th>
+                    <th>Tip</th>
+                    <th>Örnek Kullanım</th>
+                    <th>Açıklama / Çıktı</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>%d</code> / <code>%i</code></td>
+                    <td><code>int</code></td>
+                    <td><code>printf("%d", -42);</code></td>
+                    <td>İşaretli 32-bit tamsayı (<code>-42</code>)</td>
+                  </tr>
+                  <tr>
+                    <td><code>%u</code></td>
+                    <td><code>unsigned int</code></td>
+                    <td><code>printf("%u", -1);</code></td>
+                    <td>İşaretsiz tamsayı. Negatif verilirse <code>4294967295</code> (UINT_MAX) basar!</td>
+                  </tr>
+                  <tr>
+                    <td><code>%x</code> / <code>%X</code></td>
+                    <td><code>unsigned int</code></td>
+                    <td><code>printf("0x%X", 255);</code></td>
+                    <td>Onaltılık (Hexadecimal) gösterim (<code>0xFF</code>)</td>
+                  </tr>
+                  <tr>
+                    <td><code>%o</code></td>
+                    <td><code>unsigned int</code></td>
+                    <td><code>printf("%o", 8);</code></td>
+                    <td>Sekizli (Octal) taban gösterimi (<code>10</code>)</td>
+                  </tr>
+                  <tr>
+                    <td><code>%f</code></td>
+                    <td><code>float / double</code></td>
+                    <td><code>printf("%.2f", 3.1415);</code></td>
+                    <td>Kayan noktalı sayı (printf otomatik <code>double</code>'a yükseltir)</td>
+                  </tr>
+                  <tr>
+                    <td><code>%lf</code></td>
+                    <td><code>double</code></td>
+                    <td><code>scanf("%lf", &amp;val);</code></td>
+                    <td><strong>scanf için şarttır!</strong> <code>%f</code> verilirse 4 byte yazar, <code>double</code> bozulur.</td>
+                  </tr>
+                  <tr>
+                    <td><code>%c</code></td>
+                    <td><code>char</code></td>
+                    <td><code>printf("%c", 65);</code></td>
+                    <td>Tek bir ASCII karakter (<code>A</code>)</td>
+                  </tr>
+                  <tr>
+                    <td><code>%s</code></td>
+                    <td><code>char*</code></td>
+                    <td><code>printf("%s", "ArenaC");</code></td>
+                    <td>Null-terminated string. Bellekte <code>\0</code> görene dek okur.</td>
+                  </tr>
+                  <tr>
+                    <td><code>%zu</code></td>
+                    <td><code>size_t</code></td>
+                    <td><code>printf("%zu", sizeof(int));</code></td>
+                    <td><strong>C99 Standart boyutu.</strong> <code>sizeof</code> sonucu için <code>%d</code> yerine <code>%zu</code> kullanılmalıdır!</td>
+                  </tr>
+                  <tr>
+                    <td><code>%td</code></td>
+                    <td><code>ptrdiff_t</code></td>
+                    <td><code>printf("%td", p2 - p1);</code></td>
+                    <td>İki işaretçi (pointer) arasındaki eleman farkı için standart belirteç.</td>
+                  </tr>
+                  <tr>
+                    <td><code>%p</code></td>
+                    <td><code>void*</code></td>
+                    <td><code>printf("%p", (void*)ptr);</code></td>
+                    <td>Hekzadesimal bellek adresi (örn. <code>0x7ffee4b2c890</code>).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="docs-card">
+            <h4 class="docs-card-title">Dinamik Biçimlendirme & İleri Düzey Bayraklar</h4>
+            <div class="docs-grid-2">
+              <div class="docs-subcard">
+                <code>printf("%.*s", 3, "ArenaC");</code>
+                <p><strong>Dinamik uzunluk:</strong> İlk argüman kaç karakter basılacağını belirler. Çıktı: <code>Are</code></p>
+              </div>
+              <div class="docs-subcard">
+                <code>printf("%*d", 5, 42);</code>
+                <p><strong>Dinamik genişlik:</strong> Sütun genişliğini değişkenden alır. Çıktı: <code>   42</code></p>
+              </div>
+              <div class="docs-subcard">
+                <code>printf("%05d", 42);</code>
+                <p><strong>Sıfırla doldurma:</strong> 5 haneye ulaşana kadar sola sıfır ekler. Çıktı: <code>00042</code></p>
+              </div>
+              <div class="docs-subcard">
+                <code>printf("C%n", &amp;cnt);</code>
+                <p><strong>%n sayacı:</strong> O ana kadar ekrana basılan karakter sayısını değişkene yazar (<code>cnt = 1</code>).</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-callout docs-callout-warning">
+            <div class="docs-callout-head">
+              <svg class="docs-callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              <strong>Sık Karşılaşılan Format Tuzakları:</strong>
+            </div>
+            <ul>
+              <li><code>scanf("%d", n);</code> yerine <code>scanf("%d", &amp;n);</code> yazılmalıdır. Adres operatörü <code>&amp;</code> unutulursa bellek ihlali (Segfault) olur.</li>
+              <li><code>scanf(" %c", &amp;ch);</code> — Başındaki boşluk kritik! Boşluk konulmazsa önceki girdiden arta kalan <code>\n</code> (Enter) karakterini okur.</li>
+              <li><code>printf("%s", 'A');</code> — Tek tırnak karakterdir (int 65). String bekleyen <code>%s</code> 65 nolu adresi okumaya kalkışır ve çöker!</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 2. STANDART KÜTÜPHANELER -->
+        <section class="docs-section hidden" id="docsSectionLibs">
+          <div class="docs-card">
+            <div class="docs-lib-head">
+              <span class="docs-badge-lib">&lt;stdio.h&gt;</span>
+              <h4>Standart Giriş / Çıkış</h4>
+            </div>
+            <ul class="docs-fn-list">
+              <li><code>printf(...)</code> / <code>scanf(...)</code>: Konsol biçimli çıktı ve girdi alma.</li>
+              <li><code>snprintf(buf, size, fmt, ...)</code>: <strong>Güvenli biçimlendirme!</strong> <code>sprintf</code> yerine her zaman <code>snprintf</code> tercih edilir; tampon taşmasını (buffer overflow) önler.</li>
+              <li><code>puts(str)</code>: Dizgiyi ekrana basar ve otomatik sonuna yeni satır (<code>\n</code>) ekler.</li>
+              <li><code>getchar()</code> / <code>putchar(c)</code>: Standart girdiden tek karakter okur / ekrana tek karakter yazar.</li>
+              <li><code>sscanf(str, fmt, ...)</code>: Konsoldan değil, bir string içinden biçimli veri ayrıştırır.</li>
+            </ul>
+          </div>
+
+          <div class="docs-card">
+            <div class="docs-lib-head">
+              <span class="docs-badge-lib">&lt;stdlib.h&gt;</span>
+              <h4>Dinamik Bellek & Genel Yardımcılar</h4>
+            </div>
+            <ul class="docs-fn-list">
+              <li><code>malloc(size)</code>: Heap'ten <code>size</code> byte tahsis eder. <strong>Belleği temizlemez</strong> (içi rastgele çöp değerdir).</li>
+              <li><code>calloc(num, size)</code>: Heap'ten yer ayırır ve <strong>tüm bitleri sıfırlar (0x00)</strong>.</li>
+              <li><code>realloc(ptr, new_size)</code>: Tahsis edilen bloğun boyutunu değiştirir. Gerekirse yeni adrese taşır.</li>
+              <li><code>free(ptr)</code>: Tahsis edilen belleği sisteme iade eder. *(İpucu: <code>free(p); p = NULL;</code> dangling pointer'ı önler)*.</li>
+              <li><code>qsort(base, n, size, cmp)</code>: Hızlı sıralama algoritması (O(N log N)). Karşılaştırma fonksiyonu pointer'ı alır.</li>
+              <li><code>bsearch(key, base, n, size, cmp)</code>: Sıralı dizide ikili arama (Binary search - O(log N)).</li>
+              <li><code>strtol(str, &amp;end, base)</code>: String'i güvenle tamsayıya çevirir (10'luk, 16'lık taban desteğiyle <code>atoi</code>'den üstündür).</li>
+              <li><code>exit(status)</code>: Programı anında belirtilen çıkış koduyla sonlandırır (<code>0</code> = başarılı).</li>
+            </ul>
+          </div>
+
+          <div class="docs-card">
+            <div class="docs-lib-head">
+              <span class="docs-badge-lib">&lt;string.h&gt;</span>
+              <h4>Dizgi & Ham Bellek İşlemleri</h4>
+            </div>
+            <ul class="docs-fn-list">
+              <li><code>strlen(str)</code>: Dizginin <code>\0</code> sonlandırıcı hariç net karakter uzunluğu.</li>
+              <li><code>strcmp(s1, s2)</code>: İki stringi kıyaslar. <strong>Eşitse 0 döner!</strong> <code>s1 &lt; s2</code> ise negatif, <code>s1 &gt; s2</code> ise pozitif.</li>
+              <li><code>strncmp(s1, s2, n)</code>: İlk <code>n</code> karakteri güvenle kıyaslar.</li>
+              <li><code>memcpy(dest, src, n)</code>: <code>n</code> byte bellek kopyalar. <strong>Kaynak ve hedef bellek çakışmamalıdır!</strong></li>
+              <li><code>memmove(dest, src, n)</code>: Bellek alanları birbiriyle çakışsa bile (overlapping) güvenle kopyalar.</li>
+              <li><code>memset(ptr, val, n)</code>: Bellek bloğunun tüm byte'larını <code>val</code> değeriyle doldurur (örn: <code>memset(arr, 0, sizeof(arr))</code>).</li>
+              <li><code>strchr(s, c)</code> / <code>strstr(haystack, needle)</code>: Karakter veya alt-string arar, bulduğu adresi döner.</li>
+            </ul>
+          </div>
+
+          <div class="docs-card">
+            <div class="docs-lib-head">
+              <span class="docs-badge-lib">&lt;stdint.h&gt; &amp; &lt;stdbool.h&gt;</span>
+              <h4>Modern Taşınabilir Tip Güvenliği</h4>
+            </div>
+            <ul class="docs-fn-list">
+              <li><code>int8_t</code>, <code>int16_t</code>, <code>int32_t</code>, <code>int64_t</code>: Kesin bit genişlikli işaretli tamsayılar.</li>
+              <li><code>uint8_t</code>, <code>uint16_t</code>, <code>uint32_t</code>, <code>uint64_t</code>: Kesin bit genişlikli işaretsiz tamsayılar.</li>
+              <li><code>uintptr_t</code>: Bir pointer adresini kayıpsız tutabilecek genişlikte işaretsiz tamsayı.</li>
+              <li><code>bool</code>, <code>true</code> (1), <code>false</code> (0): C99 ile gelen standart mantıksal tip.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 3. BELLEK & POINTER -->
+        <section class="docs-section hidden" id="docsSectionMemory">
+          <div class="docs-card">
+            <h4 class="docs-card-title">Pointer Operatör Kombinasyonları</h4>
+            <p class="docs-desc">C mülakatlarında ve ArenaC sorularında en sık karşılaşılan tuzak kombinasyonlar:</p>
+            
+            <div class="docs-table-wrap">
+              <table class="docs-table">
+                <thead>
+                  <tr>
+                    <th>İfade</th>
+                    <th>Eşdeğeri</th>
+                    <th>Ne Yapar? (İşlem Sırası)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>*p++</code></td>
+                    <td><code>*(p++)</code></td>
+                    <td>Mevcut adresteki değeri alır, ardından <strong>pointer adresini</strong> bir sonraki elemana kaydırır.</td>
+                  </tr>
+                  <tr>
+                    <td><code>(*p)++</code></td>
+                    <td><code>(*p)++</code></td>
+                    <td>Adresteki değeri okur, ardından <strong>adresteki sayıyı 1 artırır</strong> (pointer adresi değişmez).</td>
+                  </tr>
+                  <tr>
+                    <td><code>++*p</code></td>
+                    <td><code>++(*p)</code></td>
+                    <td>Adresteki sayıyı <strong>önce 1 artırır</strong>, ardından güncel değeri döndürür.</td>
+                  </tr>
+                  <tr>
+                    <td><code>*++p</code></td>
+                    <td><code>*(++p)</code></td>
+                    <td><strong>Önce pointer adresini kaydırır</strong>, ardından ulaştığı yeni adresteki değeri okur.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="docs-card">
+            <h4 class="docs-card-title">Dizi Adı (arr) ile &amp;arr Farkı</h4>
+            <pre class="docs-code"><code>int arr[5] = {10, 20, 30, 40, 50};
+int *p1 = arr;        // p1 türü: int* (ilk elemanın adresi)
+int (*p2)[5] = &amp;arr;  // p2 türü: int (*)[5] (5 elemanlı dizinin işaretçisi)</code></pre>
+            <div class="docs-grid-2" style="margin-top:12px;">
+              <div class="docs-subcard">
+                <strong><code>arr + 1</code>:</strong>
+                <p>1 eleman ilerler (<code>sizeof(int) = 4 byte</code>). <code>&amp;arr[1]</code> adresine gider.</p>
+              </div>
+              <div class="docs-subcard">
+                <strong><code>(&amp;arr) + 1</code>:</strong>
+                <p>Tüm dizi boyutu kadar zıplar (<code>5 * 4 = 20 byte</code>). Dizinin bittiği adrese işaret eder!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-card">
+            <h4 class="docs-card-title">Struct Hizalaması (Memory Padding)</h4>
+            <p class="docs-desc">İşlemciler bellek okuma hızını maksimize etmek için verileri doğal sınırlarına hizalar:</p>
+            <pre class="docs-code"><code>struct Data {
+    char c;     // 1 byte
+    // [3 byte boşluk (PADDING) eklenir]
+    int x;      // 4 byte (4'ün katı adreste olmalıdır)
+    short s;    // 2 byte
+    // [2 byte boşluk (PADDING) struct'ı 4'ün katına tamamlar]
+};
+// Toplam sizeof(struct Data) = 12 byte (1 + 4 + 2 = 7 DEĞİL!)</code></pre>
+          </div>
+
+          <div class="docs-callout docs-callout-info">
+            <div class="docs-callout-head">
+              <svg class="docs-callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <strong>Bellek Bölgeleri Kuralı:</strong>
+            </div>
+            <ul>
+              <li><strong>Stack:</strong> Yerel değişkenler. Fonksiyon bitince bellek otomatik uçar. Yerel değişken adresi fonksiyondan döndürülmemelidir!</li>
+              <li><strong>Heap:</strong> <code>malloc</code> ile alınan bölge. <code>free</code> edilene kadar yaşar.</li>
+              <li><strong>ROData (String Literalleri):</strong> <code>char *s = "Merhaba";</code> ifadesinde string sabiti salt okunur bellektedir. <code>s[0] = 'm';</code> yazmaya çalışmak çökme (Segfault) üretir!</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 4. ÖNCELİKLER & UB -->
+        <section class="docs-section hidden" id="docsSectionPrecedence">
+          <div class="docs-card">
+            <h4 class="docs-card-title">Operatör Öncelik Sıralaması (Yukarıdan Aşağıya)</h4>
+            <div class="docs-table-wrap">
+              <table class="docs-table">
+                <thead>
+                  <tr>
+                    <th>Öncelik</th>
+                    <th>Operatörler</th>
+                    <th>Yön (Assoc.)</th>
+                    <th>Açıklama</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1 (En yüksek)</strong></td>
+                    <td><code>() [] -&gt; .</code></td>
+                    <td>Soldan Sağa</td>
+                    <td>Parantez, dizi indisi, struct üye erişimleri</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2</strong></td>
+                    <td><code>++ -- + - ! ~ * &amp; sizeof (type)</code></td>
+                    <td><strong>Sağdan Sola</strong></td>
+                    <td>Tekil (Unary) operatörler, adres/değer alma, tip dönüşümü</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3</strong></td>
+                    <td><code>* / %</code></td>
+                    <td>Soldan Sağa</td>
+                    <td>Çarpma, bölme, mod</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4</strong></td>
+                    <td><code>+ -</code></td>
+                    <td>Soldan Sağa</td>
+                    <td>Toplama, çıkarma</td>
+                  </tr>
+                  <tr>
+                    <td><strong>5</strong></td>
+                    <td><code>&lt;&lt; &gt;&gt;</code></td>
+                    <td>Soldan Sağa</td>
+                    <td>Bit kaydırma (Shift)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6</strong></td>
+                    <td><code>&lt; &lt;= &gt; &gt;=</code></td>
+                    <td>Soldan Sağa</td>
+                    <td>İlişkisel karşılaştırmalar</td>
+                  </tr>
+                  <tr>
+                    <td><strong>7</strong></td>
+                    <td><code>== !=</code></td>
+                    <td>Soldan Sağa</td>
+                    <td>Eşitlik kıyaslaması</td>
+                  </tr>
+                  <tr>
+                    <td><strong>8 - 10</strong></td>
+                    <td><code>&amp;</code> sonra <code>^</code> sonra <code>|</code></td>
+                    <td>Soldan Sağa</td>
+                    <td>Bit düzeyinde VE, XOR, VEYA</td>
+                  </tr>
+                  <tr>
+                    <td><strong>11 - 12</strong></td>
+                    <td><code>&amp;&amp;</code> sonra <code>||</code></td>
+                    <td>Soldan Sağa</td>
+                    <td>Mantıksal VE, VEYA (Kısa devre değerlendirmesi!)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>13</strong></td>
+                    <td><code>? :</code></td>
+                    <td><strong>Sağdan Sola</strong></td>
+                    <td>Üçlü koşul operatörü (Ternary)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>14</strong></td>
+                    <td><code>= += -= *= /= %= &amp;=</code></td>
+                    <td><strong>Sağdan Sola</strong></td>
+                    <td>Atama operatörleri</td>
+                  </tr>
+                  <tr>
+                    <td><strong>15 (En düşük)</strong></td>
+                    <td><code>,</code></td>
+                    <td>Soldan Sağa</td>
+                    <td>Virgül operatörü (en sağdaki ifadenin sonucunu döner)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="docs-card">
+            <h4 class="docs-card-title">Kısa Devre (Short-Circuit) Davranışı</h4>
+            <div class="docs-grid-2">
+              <div class="docs-subcard">
+                <code>if (a &amp;&amp; ++b)</code>
+                <p>Eğer <code>a == 0</code> ise, sağ taraf <strong>asla değerlendirilmez</strong>. <code>b</code> değeri artmaz!</p>
+              </div>
+              <div class="docs-subcard">
+                <code>if (a || ++b)</code>
+                <p>Eğer <code>a != 0</code> ise, sağ taraf <strong>asla değerlendirilmez</strong>. <code>b</code> değeri artmaz!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-card">
+            <h4 class="docs-card-title">Klasik Tuzaklar</h4>
+            <ul class="docs-fn-list">
+              <li><code>*p.x</code> → <code>.</code> önceliği <code>*</code>'dan yüksektir! Aslında <code>*(p.x)</code> olarak çalışır. Doğrusu: <code>(*p).x</code> veya <code>p-&gt;x</code>.</li>
+              <li><code>if (x &amp; 1 == 0)</code> → <code>==</code> önceliği <code>&amp;</code>'den yüksektir! Aslında <code>x &amp; (1 == 0)</code> hesaplanır. Doğrusu: <code>(x &amp; 1) == 0</code>.</li>
+              <li><code>c = a, b;</code> → Atama önceliği virgülden yüksektir! <code>(c = a), b;</code> olur (c = a). Ancak <code>c = (a, b);</code> yazılırsa <code>c = b</code> olur!</li>
+            </ul>
+          </div>
+
+          <div class="docs-callout docs-callout-danger">
+            <div class="docs-callout-head">
+              <svg class="docs-callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <strong>Tanımsız Davranış (Undefined Behavior - UB):</strong>
+            </div>
+            <ul>
+              <li><code>i = i++ + 1;</code> veya <code>printf("%d %d", i++, i++);</code> → Aynı sequence point içinde aynı değişkeni birden fazla kez değiştirmek UB'dir!</li>
+              <li><code>INT_MAX + 1</code> → İşaretli tamsayı taşması C standardına göre tanımsızdır (UB). (İşaretsiz <code>UINT_MAX + 1</code> ise modulo 2^32 ile tanımlıdır).</li>
+              <li>Başlatılmamış yerel değişkeni okumak (<code>int x; printf("%d", x);</code>).</li>
+              <li>Sıfıra bölme (<code>x / 0</code>).</li>
+              <li>Dizi sınırları dışına taşma (Buffer Overflow).</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="settingsModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="modal-head">
+        <h3 id="settingsTitle" data-i18n="settingsTitle">Ayarlar</h3>
+        <button class="icon-btn" id="settingsClose" type="button" title="Kapat" aria-label="Kapat">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="settingsTheme">Tema</span>
+          <span class="setting-desc" data-i18n="settingsThemeDesc">Koyu veya açık tema kullan</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn active" id="themeDarkBtn" type="button" data-i18n="themeDark">Koyu</button>
+          <button class="seg-btn" id="themeLightBtn" type="button" data-i18n="themeLight">Açık</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="settingsLanguage">Dil</span>
+          <span class="setting-desc" data-i18n="settingsLanguageDesc">Arayüzü Türkçe veya İngilizce kullan</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn active" id="langTrBtn" type="button">Türkçe</button>
+          <button class="seg-btn" id="langEnBtn" type="button">English</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="settingsSound">Ses Efektleri</span>
+          <span class="setting-desc" data-i18n="settingsSoundDesc">Tuşlama ve cevap seslerini aç veya kapat</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn active" id="soundOnBtn" type="button" data-i18n="soundOn">Açık</button>
+          <button class="seg-btn" id="soundOffBtn" type="button" data-i18n="soundOff">Kapalı</button>
+        </div>
+      </div>
+
+      <div class="setting-row" id="volumeRow">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="settingsVolume">Ses Seviyesi</span>
+          <span class="setting-desc" data-i18n="settingsVolumeDesc">Ses efektlerinin yükseklik seviyesi</span>
+        </div>
+        <div class="volume-control">
+          <input type="range" class="volume-slider" id="soundVolumeSlider" min="0" max="100" value="50" step="1" aria-label="Ses seviyesi" />
+          <span class="volume-value" id="soundVolumeValue">50%</span>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="settingsLineNums">Kod Satır Numaraları</span>
+          <span class="setting-desc" data-i18n="settingsLineNumsDesc">Kod pencerelerinde sol satır numaralarını göster</span>
+        </div>
+        <div class="segmented">
+          <button class="seg-btn active" id="lineNumsOnBtn" type="button" data-i18n="lineNumsOn">Açık</button>
+          <button class="seg-btn" id="lineNumsOffBtn" type="button" data-i18n="lineNumsOff">Kapalı</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="settingsBackup">Veri Yedekleme</span>
+          <span class="setting-desc" data-i18n="settingsBackupDesc">XP, seviye, rekorlar ve favori sorularını JSON olarak yedekle</span>
+        </div>
+        <div class="modal-actions-row">
+          <button class="btn btn-ghost btn-sm" id="exportDataBtn" type="button" data-i18n="exportBtn">Yedek İndir</button>
+          <button class="btn btn-ghost btn-sm" id="importDataBtn" type="button" data-i18n="importBtn">Yedek Yükle</button>
+          <input type="file" id="importFileInput" accept=".json" class="hidden" />
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="settingsFullscreen">Tam Ekran</span>
+          <span class="setting-desc" data-i18n="settingsFullscreenDesc">Tarayıcıyı tam ekran moduna geçir</span>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="fsToggleBtn" type="button">Tam ekran</button>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="installApp">Uygulamayı Yükle</span>
+          <span class="setting-desc" data-i18n="installIntro">ArenaC'yi ana ekranına uygulama gibi ekleyebilirsin; çevrimdışı da çalışır.</span>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="installBtn" type="button" data-i18n="installApp">Uygulamayı Yükle</button>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="settingsReset">En İyi Skorlar</span>
+          <span class="setting-desc" data-i18n="settingsResetDesc">Kaydedilmiş tüm rekorları sil</span>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="resetBestBtn" type="button" data-i18n="resetBtn">Sıfırla</button>
+      </div>
+
+      <p class="settings-feedback hidden" id="settingsFeedback"></p>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div class="modal-backdrop hidden" id="profileModal">
+    <div class="modal modal-profile" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+      <div class="modal-head">
+        <h3 id="profileTitle" data-i18n="profileTitle">Kullanıcı Profili</h3>
+        <button class="icon-btn" id="profileClose" type="button" title="Kapat" aria-label="Kapat">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="profile-card-header">
+        <div class="profile-avatar-large" id="profileAvatarIcon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <div class="profile-header-info">
+          <h4 class="profile-display-name" id="profileNameDisplay">C Programcısı</h4>
+          <span class="profile-display-title" id="profileTitleDisplay">Seviye 1 · C Çırağı</span>
+        </div>
+      </div>
+
+      <!-- Pinned / Featured Badge Showcase -->
+      <div class="profile-pinned-wrap" id="profilePinnedBadge"></div>
+
+      <div class="profile-stats-grid">
+        <div class="profile-stat-box">
+          <span class="profile-stat-val" id="profileStatLevel">1</span>
+          <span class="profile-stat-lbl" data-i18n="statLevelLabel">Seviye</span>
+        </div>
+        <div class="profile-stat-box">
+          <span class="profile-stat-val" id="profileStatXp">0</span>
+          <span class="profile-stat-lbl">XP</span>
+        </div>
+        <div class="profile-stat-box">
+          <span class="profile-stat-val" id="profileStatStreak">0</span>
+          <span class="profile-stat-lbl" data-i18n="statStreakLabel">Seri</span>
+        </div>
+        <div class="profile-stat-box">
+          <span class="profile-stat-val" id="profileStatAccuracy">%0</span>
+          <span class="profile-stat-lbl" data-i18n="statsAccuracy">Doğruluk</span>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="profileActive">Aktif Profil</span>
+          <span class="setting-desc" data-i18n="profileActiveDesc">Farklı profiller arasında geçiş yap</span>
+        </div>
+        <div class="profile-switch-wrap">
+          <select class="select profile-select" id="profileSelector"></select>
+          <button class="btn btn-ghost btn-sm" id="profileNewBtn" type="button" data-i18n="profileNew">+ Yeni</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="profileName">Kullanıcı Adı</span>
+          <span class="setting-desc" data-i18n="profileNameDesc">Profilinde görünecek takma isim</span>
+        </div>
+        <input type="text" class="profile-input" id="profileNameInput" maxlength="24" placeholder="C Programcısı" />
+      </div>
+
+      <div class="profile-actions-row">
+        <button class="btn btn-primary" id="profileSaveBtn" type="button" data-i18n="profileSave">Kaydet</button>
+        <button class="btn btn-ghost" id="profileDeleteBtn" type="button" data-i18n="profileDelete">Profili Sil</button>
+      </div>
+
+      <div class="setting-row profile-export-row">
+        <div class="setting-info">
+          <span class="setting-label" data-i18n="profileBackupTitle">Profil Yedekleme</span>
+          <span class="setting-desc" data-i18n="profileBackupDesc">Bu profili ve ilerlemesini JSON olarak dışa aktar</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-ghost btn-sm" id="profileExportBtn" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span data-i18n="profileExport">Profili İndir</span>
+          </button>
+          <button class="btn btn-ghost btn-sm" id="profileImportBtn" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <span data-i18n="profileImport">Profil Yükle</span>
+          </button>
+          <input type="file" id="profileFileInput" accept=".json" class="hidden" />
+        </div>
+      </div>
+
+      <p class="settings-feedback hidden" id="profileFeedback"></p>
+    </div>
+  </div>
+
+  
+  <!-- Badges & Achievements Modal -->
+  <div class="modal-backdrop hidden" id="badgesModal">
+    <div class="modal modal-badges" role="dialog" aria-modal="true" aria-labelledby="badgesTitle">
+      <div class="modal-head">
+        <div class="modal-title-wrap">
+          <h3 id="badgesTitle" data-i18n="badgesModalTitle">Başarımlar & Rozetler</h3>
+          <span class="chip chip-docs" id="badgesCount">0 / 20</span>
+        </div>
+        <button class="icon-btn" id="badgesClose" type="button" title="Kapat" aria-label="Kapat">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <p class="modal-sub" data-i18n="badgesModalSub">Kolaydan efsaneviye tüm hedefler. Kazandığın rozetlerden en beğendiğini profiline sabitleyebilirsin.</p>
+      <div class="badges-showcase" id="badgesList"></div>
+    </div>
+  </div>
+
+  <script src="questions.js" defer></script>
+  <script src="debug_questions.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
