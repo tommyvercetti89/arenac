@@ -66,4 +66,29 @@ appJsMatches.forEach(id => {
   }
 });
 
+console.log('--- 10. Validating style.css brace pairing and syntax ---');
+const css = fs.readFileSync(baseDir + 'style.css', 'utf8');
+let depth = 0;
+let blockStack = [];
+const lines = css.split('\n');
+for (let i = 0; i < lines.length; i++) {
+  const line = lines[i];
+  for (let j = 0; j < line.length; j++) {
+    const c = line[j];
+    if (c === '{') {
+      depth++;
+      blockStack.push({ line: i + 1, text: line.trim() });
+    }
+    if (c === '}') {
+      depth--;
+      blockStack.pop();
+    }
+  }
+}
+if (depth !== 0) {
+  console.error('CSS BRACE IMBALANCE ERROR! Depth:', depth, 'Stack:', blockStack);
+  process.exit(1);
+}
+console.log('style.css brace pairing valid! Total lines:', lines.length);
+
 console.log('\nALL VERIFICATION CHECKS PASSED WITH 100% SUCCESS!');

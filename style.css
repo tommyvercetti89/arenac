@@ -1342,6 +1342,9 @@ kbd {
 }
 
 .mode-tab.active .mode-tab-sub {
+  color: var(--text-muted);
+}
+
 /* Custom Select Controls */
 .custom-select-wrap {
   position: relative;
